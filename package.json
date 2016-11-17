@@ -1,0 +1,15 @@
+{
+  "name": "webapp",
+  "version": "1.0.0",
+  "description": "for learninng webpack as example",
+  "main": "index.js",
+  "scripts": {
+    "test": "webpack",
+    "start": "webpack"
+  },
+  "author": "pc",
+  "license": "ISC",
+  "devDependencies": {
+    "webpack": "^1.13.3"
+  }
+}
