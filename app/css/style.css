@@ -5,3 +5,8 @@
 .login .ant-anchor-link-title{
     color: rgb(0,188,212);
 }
+.ant-menu-submenu-title{
+    width : 240px;
+    background-color: #666666;
+    color : #ffffff;
+}

@@ -1,27 +1,46 @@
 /**
  * Created by pengcheng on 2016/12/30.
  */
+import { Layout } from 'antd';
+const { Header, Footer, Sider, Content } = Layout;
 const React = require('react');
 const ListView = require('../component/ListView');
+const Slider = require('../component/Sider');
+const routers = require('../router/router-config');
 module.exports = React.createClass({
     getInitialState : function () {
         return {
-            data : ['乔丹','奥尼尔','邓肯','科比','韦德','詹姆斯'],
-            num : 0
+            module : this.props.params.module,
+            part : this.props.params.part,
+            type : this.props.params.type
         }
     },
-    changeState : function () {
+    changeState : function (module,part,type) {
         this.setState({
-           data : ['安东尼','维斯布鲁克','库里','克莱·汤普森'],
-           num : 1
+           module : module,
+           part : part,
+           type : type
         });
     },
     render : function () {
+        var module = this.state.module,part = this.state.part,type = this.state.type ;
+        var routeObj = routers();
+        var Component = module && part && type ? routeObj[module][part][type] : module && part ? routeObj[module][part] : routeObj[404];
         return (
-            <div>
-                <ListView lists={ this.state.data } num={ this.state.num } />
-                <button onClick={ this.changeState}>Click Me</button>
-            </div>
+            <Layout style={ style.height }>
+                <Sider>
+                    <Slider changeState={ this.changeState } />
+                </Sider>
+                <Content>
+                    <Component />
+                </Content>
+            </Layout>
         )
     }
 });
+
+const style = {
+    height : {
+        height : '100%'
+    }
+}

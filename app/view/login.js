@@ -42,6 +42,7 @@ module.exports = React.createClass({
             password : this.refs.password.refs.input.value
         };
         this.state.checked ? window.localStorage.setItem('user',JSON.stringify(userData)) : window.localStorage.removeItem('user');
+
         console.log('username : '+this.refs.username.refs.input.value+'\npassword : '+this.refs.password.refs.input.value);
     },
     render : function () {
